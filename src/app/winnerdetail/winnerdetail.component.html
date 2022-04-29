@@ -1,0 +1,27 @@
+<div class="wrapper-box">
+    <div class="container">
+        <h2 class="text-center mb-5">Detail Form</h2>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" id="name" required [(ngModel)]="winners.name" name="name" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" id="email" required [(ngModel)]="winners.email" name="email" />
+                </div>
+                <div class="form-group">
+                    <label for="cellno">CellNo</label>
+                    <input class="form-control" id="cellno" required [(ngModel)]="winners.cellno" name="cellno" />
+                </div>
+
+                <div>
+                    <button (click)="saveDetail()" class="btn btn-success">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
