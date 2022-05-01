@@ -95,3 +95,7 @@ li {
   .closebtn:hover {
     color: black;
   }
+  .div-disabled{
+    pointer-events:none;
+  }
+  

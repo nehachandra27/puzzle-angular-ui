@@ -19,7 +19,7 @@ export class ImagePuzzleComponent implements OnInit {
   difficulty: string = '2';
   steps: number = 0;
   ticks: string = '0:00';
-  timer: any =timer(0, 1000);
+  timer: any = timer(0, 1000);
   timeVar: any;
   gameComplete: Boolean = false;
   showAlert: Boolean = false;
@@ -90,31 +90,25 @@ export class ImagePuzzleComponent implements OnInit {
     }
 
     this.printIndexes(this.position);
-    
+
 
     this.steps++;
-    if(this.ticksinsecond>=300){
+    if (this.ticksinsecond >= 300 && this.ticksinsecond <= 600) {
       alert("Sorry! You are disqualified from this game");
     }
     this.gameComplete = this.isSorted(this.position);
-    if (this.gameComplete) {
-      console.log("game completed ----------",this.ticks);
-
-      console.log("this.ticks ----------", this.ticks);
-      var gamecompletedTime = parseInt(this.ticks);
-
-
+      
+     if (this.gameComplete) {
       console.log("game ticksinsecond  ----------", this.ticksinsecond);
-
-
-       if(this.ticksinsecond <= 30){
+      if (this.ticksinsecond <= 30) {
         alert("You won $50!! Please fill your details below");
-        
-       } else if(this.ticksinsecond>30 && this.ticksinsecond<=60){
-           alert("You won $10 !! Please fill your details below");
-       } else if(this.ticksinsecond>60 && this.ticksinsecond<=120){
-           alert("You won $5 !! Please fill your details below");
-       } 
+
+      } else if (this.ticksinsecond > 30 && this.ticksinsecond <= 60) {
+        alert("You won $10 !! Please fill your details below");
+      } else if (this.ticksinsecond > 60 && this.ticksinsecond <= 120) {
+        alert("You won $5 !! Please fill your details below");
+      }
+
       if (this.timeVar) {
         this.timeVar.unsubscribe();
 
@@ -122,7 +116,7 @@ export class ImagePuzzleComponent implements OnInit {
       }
     }
 
-   
+
   }
 
   allowDrop(event): void {
@@ -148,28 +142,29 @@ export class ImagePuzzleComponent implements OnInit {
     this.initializeGame();
     this.breakImageParts();
     this.reRandomize();
+    this.steps = 0;
 
     if (this.timeVar) {
       this.timeVar.unsubscribe();
     }
     this.timeVar = this.timer.subscribe(t => {
 
-      console.log("time is --------",t);
+
       this.settime(t);
 
 
     });
-    
+
 
   }
 
   settime(t: number): void {
- 
+
 
     this.ticksinsecond = t;
     this.ticks = Math.floor(t / 60).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false }) + ':' +
       (t % 60).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
-      
+
   }
   breakImageParts(): void {
     for (this.index = 0; this.index < this.totalBoxes; this.index++) {
